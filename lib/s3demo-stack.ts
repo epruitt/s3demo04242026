@@ -1,6 +1,7 @@
-import * as cdk from 'aws-cdk-lib/core';
-import { Construct } from 'constructs';
+import * as cdk from "aws-cdk-lib/core";
+import { Construct } from "constructs";
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
+import * as s3 from "aws-cdk-lib/aws-s3";
 
 export class S3DemoStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -12,5 +13,12 @@ export class S3DemoStack extends cdk.Stack {
     // const queue = new sqs.Queue(this, 'S3DemoQueue', {
     //   visibilityTimeout: cdk.Duration.seconds(300)
     // });
+
+    // S3 Bucket
+    const s3demobucket = new s3.Bucket(this, "s3demobucket04242026", {
+      bucketName: "demos3bucket223",
+      versioned: true,
+      publicReadAccess: false,
+    });
   }
 }
