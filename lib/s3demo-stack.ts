@@ -11,11 +11,6 @@ export class S3DemoStack extends cdk.Stack {
 
     // The code that defines your stack goes here
 
-    // example resource
-    // const queue = new sqs.Queue(this, 'S3DemoQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
-
     // S3 Bucket
     const s3demobucket = new s3.Bucket(this, "s3DemoBucket04242026", {
       bucketName: "demos3bucket212",
@@ -33,7 +28,7 @@ export class S3DemoStack extends cdk.Stack {
 
     // lambda function
     const demolambda = new lambda.Function(this, "logicalId", {
-      code: lambda.Code.fromAsset("../services/"),
+      code: lambda.Code.fromAsset("../services"),
       handler: "lambda_function.lambda_handler",
       runtime: lambda.Runtime.PYTHON_3_10,
       functionName: "demoCdkLambda",
