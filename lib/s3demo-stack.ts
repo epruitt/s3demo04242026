@@ -28,7 +28,7 @@ export class S3DemoStack extends cdk.Stack {
 
     // lambda function
     const demolambda = new lambda.Function(this, "logicalId", {
-      code: lambda.Code.fromAsset("../services"),
+      code: lambda.Code.fromAsset("../services/"),
       handler: "lambda_function.lambda_handler",
       runtime: lambda.Runtime.PYTHON_3_10,
       functionName: "demoCdkLambda",
