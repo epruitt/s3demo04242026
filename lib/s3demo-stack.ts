@@ -35,6 +35,7 @@ export class S3DemoStack extends cdk.Stack {
       handler: "lambda_function.lambda_handler",
       runtime: lambda.Runtime.PYTHON_3_10,
       functionName: "demoCdkLambda",
+      logRemovalPolicy: cdk.RemovalPolicy.DESTROY,
     });
 
     //CloudWatch Alarm
