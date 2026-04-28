@@ -17,6 +17,7 @@ export class S3DemoStack extends cdk.Stack {
       bucketName: "demos3bucket212",
       versioned: true,
       publicReadAccess: false,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
     });
 
     // dynamoDB table
@@ -25,6 +26,7 @@ export class S3DemoStack extends cdk.Stack {
       writeCapacity: 3,
       partitionKey: { name: "customerId", type: dynamodb.AttributeType.NUMBER },
       tableName: "demoTableName",
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
     });
 
     // lambda function
