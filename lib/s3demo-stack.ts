@@ -4,6 +4,7 @@ import { Construct } from "constructs";
 import * as s3 from "aws-cdk-lib/aws-s3";
 import * as dynamodb from "aws-cdk-lib/aws-dynamodb";
 import * as lambda from "aws-cdk-lib/aws-lambda";
+import * as cloudWatch from "aws-cdk-lib/aws-cloudwatch";
 
 export class S3DemoStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -32,6 +33,13 @@ export class S3DemoStack extends cdk.Stack {
       handler: "lambda_function.lambda_handler",
       runtime: lambda.Runtime.PYTHON_3_10,
       functionName: "demoCdkLambda",
+    });
+
+    //CloudWatch Alarm
+    const cloudWatchDemo = new cloudWatch.Alarm(this, "cloudWatchLogicalId", {
+      evaluationPeriods: 1,
+      threshold: 1,
+      metric: demolambda.metricErrors(),
     });
   }
 }
