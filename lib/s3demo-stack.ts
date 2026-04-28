@@ -18,6 +18,7 @@ export class S3DemoStack extends cdk.Stack {
       versioned: true,
       publicReadAccess: false,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
+      autoDeleteObjects: true,
     });
 
     // dynamoDB table
